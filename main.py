@@ -14,6 +14,7 @@ response = image_to_data('Label.jpg')
 nutritional_data = get_label_data(response)
 print(nutritional_data)
 if 'error' not in nutritional_data:
+    nutritional_data['weight']=125
     requests.post('http://54.253.49.152/api/', json=nutritional_data)
 os.rename('Label.jpg','Label_old.jpg')
 
@@ -22,8 +23,12 @@ os.rename('Label.jpg','Label_old.jpg')
 
 """
 TODO: 
+    fix 'None' bug that was triggered with downloads/label.jpg
     add api comm
     add weight sensor stuff
         when does the weight information trigger the photo?
     secure comms with ssl
+
+    possibilities:
+        loop when table not detected
 """

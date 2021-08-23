@@ -60,7 +60,7 @@ def get_macronutrients(row,last_column,data):
 
 def validate_data(amount):
     original = amount
-    for i in ['kj','g','cal','(',')',' ']:
+    for i in ['kj','g','cal','kcal','(',')',' ','k','j','/']:
         amount = amount.lower().replace(i,'')
     if amount.isnumeric() or isfloat(amount):
         return {'error': None, 'content': amount}
@@ -102,6 +102,8 @@ def get_label_data(response):
         last_column = get_last_column(label)
         if last_column:
             break
+    if not last_column:
+        return {'error':'could not find \'per 100g\' column'}
 
     for row in label:
         data = get_macronutrients(label[row],last_column,data)
