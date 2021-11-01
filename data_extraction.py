@@ -44,7 +44,7 @@ def get_text(result, blocks_map):
     return text
 
 def get_macronutrients(row,last_column,data):
-    nutrients = ['energy','protein','fat','carbs','carbohydrate','sugars']
+    nutrients = ['energy','protein','fat','carbs','carbohydrate']
     for nutrient in nutrients:
         if nutrient in row[1].lower():
             amount = validate_data(row[last_column])
@@ -58,13 +58,20 @@ def get_macronutrients(row,last_column,data):
                 break
     return data
 
+def check_lt_one(amount):
+    if 'less' in amount.lower() and 'than' in amount.lower() and 'g' in amount.lower():
+       return True
+
 def validate_data(amount):
     original = amount
-    for i in ['kj','g','cal','kcal','(',')',' ','k','j','/']:
+    if check_lt_one(amount):
+        amount = str(0.1)
+    for i in ['kj','g','cal','kcal','(',')',' ','k','j','/','less','than']:
         amount = amount.lower().replace(i,'')
     if amount.isnumeric() or isfloat(amount):
         return {'error': None, 'content': amount}
     else:
+        print(amount)
         return {'error':'bad data', 'content': original}
 
 def isfloat(string): #very sad that python does not have this utility built in.
@@ -90,7 +97,6 @@ def get_label_data(response):
         'protein':0,
         'fat':0,
         'carbs':0,
-        'sugars':0
     }
     tables = get_tables(response)
     if not tables:

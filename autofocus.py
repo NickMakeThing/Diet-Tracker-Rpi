@@ -41,8 +41,6 @@ def autofocus():
     time.sleep(0.1)
     camera.shutter_speed=30000
 
-    print("Start focusing")
-
     max_index = 10
     max_value = 0.0
     last_value = 0.0
@@ -73,7 +71,7 @@ def autofocus():
     time.sleep(1)
     camera.resolution = (1920,1080)
     camera.capture("Label.jpg")
-    print("max index = %d,max value = %lf" % (max_index,max_value))
+    #print("max index = %d,max value = %lf" % (max_index,max_value))
     #while True:
     #   time.sleep(1)
 
