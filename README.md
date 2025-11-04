@@ -5,4 +5,4 @@ The photos would be sent to an AWS service called [Textract](https://aws.amazon.
 
 The website backend was written in python using the Django framework. The front end was written in plain Javascript, HTML, and CSS. The user is presented with a controllable graph, which provides options to show how much energy, fats, protein, and carbs were consumed on a regular basis. The user may select from a range of timeframes (daily, weekly, monthly).
 
-The code for the website can be found [here]([https://github.com/NickMakeThing/Diet-Tracker-Rpi](https://github.com/NickMakeThing/Diet-Tracker-Website/tree/master))
+The code for the website can be found [here](https://github.com/NickMakeThing/Diet-Tracker-Rpi](https://github.com/NickMakeThing/Diet-Tracker-Website/tree/master)
